@@ -6,4 +6,8 @@
 -Another dataset called the world happiness report which consist of various life factors, scored by the people living in each country around the globe.
 -The datasets were cleaned, merged and correlated to form relationships between the maximum infection rates and factors of happiness across countries.
 
-## [Project-2: Digit Recognition of Handwritten Text with Tensorflow 1.x]
+## [Project-2: Digit Recognition of Handwritten Text with Tensorflow 1.x](https://github.com/mowne67/Portfolio-Mowne/blob/main/Digit_Recognition_from_Handwritten_Text_with_Tensorflow_1_x.ipynb)
+
+-Used hand-drawn images of the numbers 0-9 and built a neural network to recognize and predict the correct label for the digit displayed.
+-Successfully trained that neural network to classify the MNIST dataset with around 92% accuracy.
+-Used an older version of tensorflow (1.x)
