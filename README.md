@@ -12,4 +12,4 @@
 - Successfully trained that neural network to classify the MNIST dataset with around 92% accuracy.
 - Used an older version of tensorflow (1.x)
 
-## [Project-3: Handwritten Digit Recognition with Tensorflow 2.0 and Keras (Improved Project-2)](https://colab.research.google.com/drive/1xykAjop1ye5miKYvZK6DG2T-S_gxBl1f?usp=sharing)
+## [Project-3: Handwritten Digit Recognition with Tensorflow 2.0 and Keras (Improved Project-2)](https://github.com/mowne67/Portfolio-Mowne/blob/main/Handwritten_Digit_Recognition_with_Tensorflow_2_0_%26_Keras.ipynb)
