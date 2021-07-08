@@ -2,7 +2,7 @@
 Mownetharan A K S, IIT Madras
 
 
-## [Project: John Hopkins COVID19 Data Exploration & Analysis with World Happiness Report](https://github.com/mowne67/Portfolio-Mowne/blob/main/john_hopkins_covid_data.ipynb)
+## [Project: John Hopkins University COVID19 Data Exploration & Analysis with World Happiness Report](https://github.com/mowne67/Portfolio-Mowne/blob/main/john_hopkins_covid_data.ipynb)
 
 - This is primarily a Data Exploration project and its about finding insights and various correlations between values of two datasets.
 - Worked with COVID19 dataset, published by John Hopkins University, which consist of the data related to cumulative number of confirmed cases per day in each Country.
