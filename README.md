@@ -10,7 +10,7 @@ Mownetharan A K S, IIT Madras
 - The datasets were cleaned, merged and correlated to form relationships between the maximum infection rates and factors of happiness across countries.
 - Contains relevant figures and plots.
 
-## [Project: Handwritten Digit Recognition with Tensorflow 2.0 and Keras (Improved Project-2)](https://github.com/mowne67/Portfolio-Mowne/blob/main/Handwritten_Digit_Recognition_with_Tensorflow_2_0_%26_Keras.ipynb)
+## [Project: Handwritten Digit Recognition with Tensorflow 2.0 and Keras (Improved version)](https://github.com/mowne67/Portfolio-Mowne/blob/main/Handwritten_Digit_Recognition_with_Tensorflow_2_0_%26_Keras.ipynb)
 
 - This project is an improved version of the previous Digit Recognition project as this is done with Keras.
 - Used hand-drawn images of the numbers 0-9 and built a neural network to recognize and predict the correct label for the digit displayed.
