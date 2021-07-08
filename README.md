@@ -1,4 +1,5 @@
-# Machine Learning & Data Analytics Portfolio of Mownetharan A K S, IIT Madras
+# Machine Learning & Data Analytics Portfolio
+Mownetharan A K S, IIT Madras
 
 
 ## [Project: John Hopkins COVID19 Data Exploration & Analysis with World Happiness Report](https://github.com/mowne67/Portfolio-Mowne/blob/main/john_hopkins_covid_data.ipynb)
