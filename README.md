@@ -6,7 +6,7 @@ Mownetharan A K S, IIT Madras
 - An image processing system is designed that takes any image from the internet and detects the presence of a television in the image.
 -  The convolutional neural network model is trained using a dataset that is created from scratch using an ImageScraper notebook which outputs a .csv file of image URLs from DuckDuckGo search images.
 -  An accuracy of 82.81% is achieved from test set which is good for an Image Processing model that only has 850 training images with few layers in the neural network.
--  
+
 ## [Data Exploration: John Hopkins University COVID19 Data Exploration & Analysis with World Happiness Report](https://github.com/mowne67/Portfolio-Mowne/blob/main/john_hopkins_covid_data.ipynb)
 
 - This is primarily a Data Exploration project and its about finding insights and various correlations between values of two datasets.
