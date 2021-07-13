@@ -1,7 +1,7 @@
 # Machine Learning & Data Analytics Portfolio
 Mownetharan A K S, IIT Madras
 ## ML Projects:
-## [Television Image Detector with CNNs wuing Tensorflow & Keras](https://github.com/mowne67/Portfolio-Mowne/blob/main/Television_Image_Detector.ipynb)
+## [Television Image Detector with CNNs using Tensorflow & Keras](https://github.com/mowne67/Portfolio-Mowne/blob/main/Television_Image_Detector.ipynb)
 
 - An image processing system is designed that takes any image from the internet and detects the presence of a television in the image.
 -  The convolutional neural network model is trained using a dataset that is created from scratch using an ImageScraper notebook which outputs a .csv file of image URLs from DuckDuckGo search images.
@@ -20,7 +20,7 @@ Mownetharan A K S, IIT Madras
 - This project is an improved version of the previous Digit Recognition project as this is done with Keras.
 - Used hand-drawn images of the numbers 0-9 and built a neural network to recognize and predict the correct label for the digit displayed.
 - Convolutional Neural Networks were built and flattened to later add dense layers, all done with Keras
-- Accuracy of 98% is achieved by ths model on the test data this time as opposed to 92% accuracy before.
+- Accuracy of 98% is achieved by this model on the test data this time as opposed to 92% accuracy before.
 
 ## [Digit Recognition of Handwritten Text with Tensorflow 1.x](https://github.com/mowne67/Portfolio-Mowne/blob/main/Digit_Recognition_from_Handwritten_Text_with_Tensorflow_1_x.ipynb)
 
