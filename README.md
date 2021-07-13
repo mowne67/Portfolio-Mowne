@@ -1,7 +1,7 @@
 # Machine Learning & Data Analytics Portfolio
 Mownetharan A K S, IIT Madras
 ## ML Projects:
-## [Television Image Detector with CNNs using Tensorflow & Keras](https://github.com/mowne67/Portfolio-Mowne/blob/main/Television_Image_Detector.ipynb)
+## [Image Processing: Television Image Detector with CNNs using Tensorflow & Keras](https://github.com/mowne67/Portfolio-Mowne/blob/main/Television_Image_Detector.ipynb)
 
 - An image processing system is designed that takes any image from the internet and detects the presence of a television in the image.
 -  The convolutional neural network model is trained using a dataset that is created from scratch using an ImageScraper notebook which outputs a .csv file of image URLs from DuckDuckGo search images.
