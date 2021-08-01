@@ -32,3 +32,7 @@ Mownetharan A K S, IIT Madras
 
 ## [Wordcloud Creation from a textfile using Python](https://github.com/mowne67/Portfolio-Mowne/blob/main/C1M6L2_Final_Project_V3.ipynb)
 
+- A basic Guided Project completed under the course 'Crash Course for Python' provided by Coursera.
+- The Instructor's complete guidances are included in the notebook and the internal functions are written by me.
+- A wordcloud is obtained from any given textfile after processing the text through cleaning (removing symbols & uninteresting words, lowercasing, etc) 
+
