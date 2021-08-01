@@ -1,12 +1,6 @@
 # Data Science & Coding Portfolio
 Mownetharan A K S, IIT Madras
 ## ML Projects:
-## [Image Processing: Television Image Detector with CNNs using Tensorflow & Keras](https://github.com/mowne67/Portfolio-Mowne/blob/main/Television_Image_Detector.ipynb)
-
-- An image processing system is designed that takes any image from the internet and detects the presence of a television in the image.
--  The convolutional neural network model is trained using a dataset that is created from scratch using an ImageScraper notebook which outputs a .csv file of image URLs from DuckDuckGo search images.
--  An accuracy of 82.81% is achieved from test set which is good for an Image Processing model that only has 850 training images with few layers in the neural network.
-
 ## [Data Exploration: John Hopkins University COVID19 Data Exploration & Analysis with World Happiness Report](https://github.com/mowne67/Portfolio-Mowne/blob/main/john_hopkins_covid_data.ipynb)
 
 - This is primarily a Data Exploration project and its about finding insights and various correlations using Visualisation.
@@ -14,6 +8,12 @@ Mownetharan A K S, IIT Madras
 - Another dataset called the world happiness report which consist of various life factors, scored by the people living in each country around the globe.
 - The datasets were cleaned, merged and correlated to form relationships between the maximum infection rates and factors of happiness across countries.
 - Contains relevant figures and plots.
+
+## [Image Processing: Television Image Detector with CNNs using Tensorflow & Keras](https://github.com/mowne67/Portfolio-Mowne/blob/main/Television_Image_Detector.ipynb)
+
+- An image processing system is designed that takes any image from the internet and detects the presence of a television in the image.
+-  The convolutional neural network model is trained using a dataset that is created from scratch using an ImageScraper notebook which outputs a .csv file of image URLs from DuckDuckGo search images.
+-  An accuracy of 82.81% is achieved from test set which is good for an Image Processing model that only has 850 training images with few layers in the neural network.
 
 ## [Handwritten Digit Recognition with Tensorflow 2.0 and Keras (Improved version)](https://github.com/mowne67/Portfolio-Mowne/blob/main/Handwritten_Digit_Recognition_with_Tensorflow_2_0_%26_Keras.ipynb)
 
