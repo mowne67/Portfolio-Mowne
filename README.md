@@ -10,6 +10,7 @@ Mownetharan A K S, IIT Madras
   - Gnews Swivel
 - Performed transfer learning to fine-tune models on Quora Insincere Questions Dataset
 - Visualized model performance metrics with TensorBoard
+- [Lighter Version of the project](https://github.com/mowne67/Portfolio-Mowne/blob/main/Transfer_Learning_NLP_TF_Hub_w_o_TensorBoard.ipynb)(without TensorBoard)
 
 ## [Data Exploration: John Hopkins University COVID19 Data Exploration & Analysis with World Happiness Report](https://github.com/mowne67/Portfolio-Mowne/blob/main/john_hopkins_covid_data.ipynb)
 
