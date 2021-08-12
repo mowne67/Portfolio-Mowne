@@ -20,6 +20,8 @@ Mownetharan A K S, IIT Madras
 - The datasets were cleaned, merged and correlated to form relationships between the maximum infection rates and factors of happiness across countries.
 - Contains relevant figures and plots.
 
+## [Term Deposit Marketing Classification](https://github.com/mowne67/Portfolio-Mowne/blob/main/Bank_Marketing_Analytics.ipynb)
+
 ## [Image Processing: Television Image Detector with CNNs using Tensorflow & Keras](https://github.com/mowne67/Portfolio-Mowne/blob/main/Television_Image_Detector.ipynb)
 
 - An image processing system is designed that takes any image from the internet and detects the presence of a television in the image.
