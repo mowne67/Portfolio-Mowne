@@ -12,7 +12,7 @@ Mownetharan A K S, IIT Madras
 - Visualized model performance metrics with TensorBoard
 - [Lighter Version of the project](https://github.com/mowne67/Portfolio-Mowne/blob/main/Transfer_Learning_NLP_TF_Hub_w_o_TensorBoard.ipynb)(without TensorBoard)
 
-## [Data Exploration: John Hopkins University COVID19 Data Analysis with World Happiness Report](https://github.com/mowne67/Portfolio-Mowne/blob/main/john_hopkins_covid_data.ipynb)
+## [Data Exploration: JHU COVID19 Data Analysis with World Happiness Report](https://github.com/mowne67/Portfolio-Mowne/blob/main/john_hopkins_covid_data.ipynb)
 
 - This is primarily a Data Exploration project and its about finding insights and various correlations using Visualisation.
 - Worked with COVID19 dataset, published by John Hopkins University, which consist of the data related to cumulative number of confirmed cases per day in each Country.
