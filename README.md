@@ -22,6 +22,11 @@ Mownetharan A K S, IIT Madras
 
 ## [Term Deposit Marketing Classification](https://github.com/mowne67/Portfolio-Mowne/blob/main/Bank_Marketing_Analytics.ipynb)
 
+- Classified Term Deposit subscription with data from 40000+ calls made by a Portuguese banking institution.
+- Trained and Tested Random Forest Classifier, Logistic Regression, Support Vector Machine, KNN models. 
+- Generated Synthetic samples from Minority class to diagnose class imbalance with SMOTE method.
+
+
 ## [Image Processing: Television Image Detector with CNNs using Tensorflow & Keras](https://github.com/mowne67/Portfolio-Mowne/blob/main/Television_Image_Detector.ipynb)
 
 - An image processing system is designed that takes any image from the internet and detects the presence of a television in the image.
