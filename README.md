@@ -1,5 +1,7 @@
 # Analytics Portfolio
 Mownetharan A K S, IIT Madras
+Machine Learning Engineer Intern at The Prints Company
+Incoming Analyst at IQVIA
 ## ML Projects:
 ## [Transfer Learning with Natural Language Processing using Tensorflow Hub and TensorBoard](https://github.com/mowne67/Portfolio-Mowne/blob/main/Transfer_Learning_NLP_TF_Hub_with_TensorBoard.ipynb)
 
