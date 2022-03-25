@@ -1,4 +1,4 @@
-# Analytics Portfolio
+# Analytics & Machine Learning Portfolio
 Mownetharan A K S, IIT Madras
 
 Machine Learning Engineer at The Prints Company (Internship)
