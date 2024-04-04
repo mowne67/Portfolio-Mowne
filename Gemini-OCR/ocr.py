@@ -3,8 +3,9 @@ import pytesseract
 import matplotlib.pyplot as plt
 import google.generativeai as genai
 import PIL.Image
+from app import api_key
 
-genai.configure(api_key="AIzaSyDS8BvpzKLnRwnpR1TVUuQUREdvDfOULgg")
+genai.configure(api_key=api_key)
 model = genai.GenerativeModel('gemini-pro-vision')
 exe_path = r"C:\Users\u1137734\AppData\Local\Programs\Tesseract-OCR\tesseract.exe"
 
