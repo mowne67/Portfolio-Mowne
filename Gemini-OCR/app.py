@@ -1,11 +1,21 @@
 import streamlit as st
-from ocr import ocr_func, llm
+import google.generativeai as genai
+import PIL.Image
+#from ocr import ocr_func, llm
 import cv2
 import numpy as np
 
 st.set_page_config(layout = 'wide')
 uploaded_file = st.file_uploader("Upload your image file", type=['png', 'jpg', 'jpeg'])
+
 api_key = st.text_input("Google API Key")
+genai.configure(api_key=api_key)
+model = genai.GenerativeModel('gemini-pro-vision')
+def llm(image):
+    image = PIL.Image.fromarray(image)
+    response = model.generate_content(["What is the text written in the given image?", image])
+    return response.text
+
 if (uploaded_file is not None) and (api_key is not None):
 
     file_bytes = uploaded_file.getvalue()
