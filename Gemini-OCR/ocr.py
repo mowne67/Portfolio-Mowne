@@ -18,7 +18,7 @@ exe_path = r"C:\Users\u1137734\AppData\Local\Programs\Tesseract-OCR\tesseract.ex
 #print(text)
 
 
-def ocr(image):
+def ocr_func(image):
     text = pytesseract.image_to_string(image, lang='eng')
     return text
 

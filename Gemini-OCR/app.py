@@ -1,5 +1,5 @@
 import streamlit as st
-from ocr import ocr, llm
+from ocr import ocr_func, llm
 import cv2
 import numpy as np
 
