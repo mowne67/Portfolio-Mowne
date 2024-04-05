@@ -2,6 +2,7 @@ import cv2
 from ultralytics import YOLO
 from collections import defaultdict
 import numpy as np
+import tempfile
 model = YOLO('yolov8n.pt')
 
 video_path = "videos/store.mp4"
