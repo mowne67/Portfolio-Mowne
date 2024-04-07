@@ -40,7 +40,7 @@ def load_creds():
             client_config,
             scopes=["https://www.googleapis.com/auth/generative-language.tuning"]
         )
-        auth_url, _ = flow.run_console(prompt='consent', )
+        auth_url, _ = flow.authorization_url(prompt='consent' )
         st.write("Please visit this URL to authorize access:", auth_url)
 
         # Ask the user to enter the authorization code obtained after authorizing access
@@ -51,9 +51,10 @@ def load_creds():
             flow.fetch_token(code=authorization_code)
             # Get the credentials
             credentials = flow.credentials
+            return credentials
 
         #creds = flow.run_local_server(port=0)
-        return credentials
+
 
     except Exception as e:
         st.error(f"Error loading Google OAuth credentials: {e}")
