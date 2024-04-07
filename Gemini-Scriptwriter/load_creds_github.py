@@ -17,16 +17,28 @@ def load_creds():
 
     try:
         # Access credentials securely from Streamlit Secrets
-        secrets = st.secrets
-        # client_id = st.secrets["GOOGLE_CLIENT_ID"]
-        # client_secret = st.secrets["GOOGLE_CLIENT_SECRET"]
+        client_id = st.secrets['client_id']
+        project_id= st.secrets['project_id']
+        auth_uri= st.secrets['auth_uri']
+        token_uri= st.secrets['token_uri']
+        auth_provider_x509_cert_url= st.secrets['auth_provider_x509_cert_url']
+        client_secret= st.secrets['client_secret']
+        redirect_uris= st.secrets['redirect_uris']
+
 
         client_config = {
-            'web': secrets
+            "installed":
+                 {"client_id":client_id,
+                  "project_id":project_id,
+                  "auth_uri":auth_uri,
+                  "token_uri":token_uri,
+                  "auth_provider_x509_cert_url":auth_provider_x509_cert_url,
+                  "client_secret":client_secret,
+                  "redirect_uris":redirect_uris}
         }
         flow = InstalledAppFlow.from_client_config(
             client_config,
-            scopes=secrets['scopes']
+            scopes=["https://www.googleapis.com/auth/generative-language.tuning"]
         )
         creds = flow.run_local_server(port=0)
         return creds
