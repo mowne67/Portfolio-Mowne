@@ -48,7 +48,7 @@ def load_creds():
 
         authorization_code = st.text_input("Enter the authorization code: ")
         if authorization_code:
-            flow.fetch_token(code=authorization_code, state = state)
+            flow.fetch_token(code=authorization_code)
 
             credentials = flow.credentials()
             return credentials
