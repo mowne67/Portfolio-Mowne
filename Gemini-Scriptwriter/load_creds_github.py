@@ -23,26 +23,26 @@ def load_creds():
             print(f"Error loading credentials from GitHub secrets: {e}")
 
     # Fallback to file-based loading if secrets retrieval fails
-    if os.path.exists('token.json'):
-        creds = Credentials.from_authorized_user_file('token.json', SCOPES)
-
-    # Handle missing or invalid credentials
-    if not creds or not creds.valid:
-        if creds and creds.expired and creds.refresh_token:
-            creds.refresh(Request())
-        else:
-            # Note: You'll need a secure way to provide client_secret.json
-            #       in a production environment, avoiding direct storage in code.
-            flow = InstalledAppFlow.from_client_secrets_file(
-                'client_secret.json', SCOPES
-            )
-            creds = flow.run_local_server(port=0)
-
-            # Save credentials for future use (optional for GitHub Actions)
-            try:
-                with open('token.json', 'w') as token:
-                    token.write(creds.to_json())
-            except Exception as e:
-                print(f"Error saving credentials to file: {e}")
+    # if os.path.exists('token.json'):
+    #     creds = Credentials.from_authorized_user_file('token.json', SCOPES)
+    #
+    # # Handle missing or invalid credentials
+    # if not creds or not creds.valid:
+    #     if creds and creds.expired and creds.refresh_token:
+    #         creds.refresh(Request())
+    #     else:
+    #         # Note: You'll need a secure way to provide client_secret.json
+    #         #       in a production environment, avoiding direct storage in code.
+    #         flow = InstalledAppFlow.from_client_secrets_file(
+    #             'client_secret.json', SCOPES
+    #         )
+    #         creds = flow.run_local_server(port=0)
+    #
+    #         # Save credentials for future use (optional for GitHub Actions)
+    #         try:
+    #             with open('token.json', 'w') as token:
+    #                 token.write(creds.to_json())
+    #         except Exception as e:
+    #             print(f"Error saving credentials to file: {e}")
 
     return creds
