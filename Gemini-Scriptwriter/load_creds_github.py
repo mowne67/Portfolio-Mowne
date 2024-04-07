@@ -17,7 +17,7 @@ def load_creds():
 
     try:
         # Access credentials securely from Streamlit Secrets
-        client_id = st.secrets["client_id"]
+        client_id = st.secrets.client_id
         project_id= st.secrets["project_id"]
         auth_uri= st.secrets["auth_uri"]
         token_uri= st.secrets["token_uri"]
