@@ -40,7 +40,6 @@ def load_creds():
         }
         flow = InstalledAppFlow.from_client_config(
             client_config,
-            redirect_uri="https://plotwriter.streamlit.app",
             scopes=["https://www.googleapis.com/auth/generative-language.tuning"]
         )
         auth_url, _ = flow.authorization_url(prompt='consent' )
