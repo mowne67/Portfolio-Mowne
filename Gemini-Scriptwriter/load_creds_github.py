@@ -17,7 +17,7 @@ def load_creds():
 
     try:
         # Access credentials securely from Streamlit Secrets
-        secrets = st.secrets['secrets'].to_json()
+        secrets = st.secrets.to_json()
         # client_id = st.secrets["GOOGLE_CLIENT_ID"]
         # client_secret = st.secrets["GOOGLE_CLIENT_SECRET"]
 
