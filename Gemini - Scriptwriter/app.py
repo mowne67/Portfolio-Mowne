@@ -1,6 +1,6 @@
 import streamlit as st
 import google.generativeai as genai
-from load_creds import load_creds
+from load_creds_github import load_creds
 import pprint
 st.set_page_config(layout="wide")
 creds = load_creds()
