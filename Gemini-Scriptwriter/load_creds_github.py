@@ -40,7 +40,7 @@ def load_creds():
             client_config,
             scopes=["https://www.googleapis.com/auth/generative-language.tuning"]
         )
-        auth_url, _ = flow.authorization_url(prompt='consent')
+        auth_url, _ = flow.run_console(prompt='consent', )
         st.write("Please visit this URL to authorize access:", auth_url)
 
         # Ask the user to enter the authorization code obtained after authorizing access
