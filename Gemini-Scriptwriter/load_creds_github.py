@@ -1,5 +1,6 @@
 import json
 import os
+import streamlit as st
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
@@ -8,22 +9,27 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 SCOPES = ['https://www.googleapis.com/auth/generative-language.tuning']
 
 # Replace 'YOUR_CLIENT_SECRETS_SECRET_NAME' with the actual secret name
-SECRET_NAME = 'GOOGLE_OAUTH'
+
 
 
 
 def load_creds():
-    """Retrieves credentials, prioritizing GitHub secrets for security."""
-    creds = None
+    """Retrieves Google OAuth credentials securely using Streamlit Secrets."""
 
-    # Prioritize secure retrieval from GitHub secrets if available
-    secret_value = os.environ.get(SECRET_NAME)
-    if secret_value:
-        try:
-            creds = Credentials.from_authorized_user_info(secret_value, SCOPES)
-            return creds  # Use credentials directly from secrets
-        except Exception as e:  # Handle potential errors with secret format
-            print(f"Error loading credentials from GitHub secrets: {e}")
+    try:
+        # Access credentials securely from Streamlit Secrets
+        client_id = st.secrets["GOOGLE_CLIENT_ID"]
+        client_secret = st.secrets["GOOGLE_CLIENT_SECRET"]
+        scopes = ['https://www.googleapis.com/auth/generative-language.tuning']  # Adjust scopes as needed
 
+        # Create the OAuth flow using retrieved credentials
+        flow = InstalledAppFlow.from_client_secrets(
+            client_secrets={'client_id': client_id, 'client_secret': client_secret},
+            scopes=scopes
+        )
+        creds = flow.run_local_server(port=0)
+        return creds
 
-    return creds
+    except Exception as e:
+        st.error(f"Error loading Google OAuth credentials: {e}")
+        return None
