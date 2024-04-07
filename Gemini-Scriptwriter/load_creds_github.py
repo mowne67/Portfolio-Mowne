@@ -52,6 +52,7 @@ def load_creds():
         #     # Fetch the access token using the authorization code
         #     flow.fetch_token(code=authorization_code)
         #     # Get the credentials
+        flow.fetch_token()
         credentials = flow.credentials
         return credentials
 
