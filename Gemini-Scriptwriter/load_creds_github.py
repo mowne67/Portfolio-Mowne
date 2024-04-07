@@ -41,20 +41,17 @@ def load_creds():
             client_config,
             redirect_uri = "https://plotwriter.streamlit.app/",
             scopes=["https://www.googleapis.com/auth/generative-language.tuning"]
-        )
-        #auth_url, _ = flow.authorization_url(prompt='consent')
-        #st.write("Please visit this URL to authorize access:", auth_url)
 
-        # Ask the user to enter the authorization code obtained after authorizing access
-        # authorization_code = st.text_input("Enter the authorization code: ")
-        # # Check if the authorization code has been provided
-        # if authorization_code:
-        #     # Fetch the access token using the authorization code
-        #     flow.fetch_token(code=authorization_code)
-        #     # Get the credentials
-        flow.run_console()
-        credentials = flow.credentials
-        return credentials
+        )
+        auth_url, state = flow.authorization_url(prompt='consent')
+        st.write("Please visit this URL to authorize access:", auth_url)
+
+        authorization_code = st.text_input("Enter the authorization code: ")
+        if authorization_code:
+            flow.fetch_token(code=authorization_code, state = state)
+
+            credentials = flow.credentials()
+            return credentials
 
         #creds = flow.run_local_server(port=0)
 
