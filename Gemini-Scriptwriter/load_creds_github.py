@@ -38,7 +38,7 @@ def load_creds():
         }
         flow = InstalledAppFlow.from_client_config(
             client_config,
-            scope="https://www.googleapis.com/auth/generative-language.tuning"
+            scopes=["https://www.googleapis.com/auth/generative-language.tuning"]
         )
         auth_url, _ = flow.authorization_url(prompt='consent' )
         st.write("Please visit this URL to authorize access:", auth_url)
