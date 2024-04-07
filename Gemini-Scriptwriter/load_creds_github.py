@@ -34,15 +34,15 @@ def load_creds():
                   "token_uri":token_uri,
                   "auth_provider_x509_cert_url":auth_provider_x509_cert_url,
                   "client_secret":client_secret,
-                  "redirect_uris": ["https://plotwriter.streamlit.app"]
-
+                  "redirect_uris": redirect_uris
                   }
         }
         flow = InstalledAppFlow.from_client_config(
             client_config,
+            redirect_uri = "https://plotwriter.streamlit.app/",
             scopes=["https://www.googleapis.com/auth/generative-language.tuning"]
         )
-        auth_url, _ = flow.authorization_url(prompt='consent' )
+        auth_url, _ = flow.authorization_url(prompt='consent')
         st.write("Please visit this URL to authorize access:", auth_url)
 
         # Ask the user to enter the authorization code obtained after authorizing access
