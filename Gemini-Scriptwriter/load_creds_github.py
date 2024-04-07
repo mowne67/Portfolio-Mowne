@@ -46,14 +46,14 @@ def load_creds():
         st.write("Please visit this URL to authorize access:", auth_url)
 
         # Ask the user to enter the authorization code obtained after authorizing access
-        authorization_code = st.text_input("Enter the authorization code: ")
-        # Check if the authorization code has been provided
-        if authorization_code:
-            # Fetch the access token using the authorization code
-            flow.fetch_token(code=authorization_code)
-            # Get the credentials
-            credentials = flow.credentials
-            return credentials
+        # authorization_code = st.text_input("Enter the authorization code: ")
+        # # Check if the authorization code has been provided
+        # if authorization_code:
+        #     # Fetch the access token using the authorization code
+        #     flow.fetch_token(code=authorization_code)
+        #     # Get the credentials
+        credentials = flow.credentials
+        return credentials
 
         #creds = flow.run_local_server(port=0)
 
