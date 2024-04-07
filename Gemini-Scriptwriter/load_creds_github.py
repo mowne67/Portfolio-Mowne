@@ -40,7 +40,7 @@ def load_creds():
             client_config,
             scopes=["https://www.googleapis.com/auth/generative-language.tuning"]
         )
-        creds = flow.run_local_server(port=0)
+        creds = flow.run_local_server(port=8507)
         return creds
 
     except Exception as e:
