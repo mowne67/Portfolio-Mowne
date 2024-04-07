@@ -34,7 +34,7 @@ def load_creds():
                   "token_uri":token_uri,
                   "auth_provider_x509_cert_url":auth_provider_x509_cert_url,
                   "client_secret":client_secret,
-                  "redirect_uris":redirect_uris}
+                  "redirect_uris":["https://plotwriter.streamlit.app"]}
         }
         flow = InstalledAppFlow.from_client_config(
             client_config,
