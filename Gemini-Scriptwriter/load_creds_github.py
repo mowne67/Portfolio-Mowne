@@ -6,7 +6,6 @@ from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 
 
-SCOPES = ['https://www.googleapis.com/auth/generative-language.tuning']
 
 # Replace 'YOUR_CLIENT_SECRETS_SECRET_NAME' with the actual secret name
 
@@ -23,7 +22,7 @@ def load_creds():
         scopes = ['https://www.googleapis.com/auth/generative-language.tuning']  # Adjust scopes as needed
 
         # Create the OAuth flow using retrieved credentials
-        flow = InstalledAppFlow.from_client_secrets(
+        flow = InstalledAppFlow.from_client_secrets_file(
             client_secrets={'client_id': client_id, 'client_secret': client_secret},
             scopes=scopes
         )
