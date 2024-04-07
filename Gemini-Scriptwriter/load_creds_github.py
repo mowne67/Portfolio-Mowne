@@ -10,7 +10,7 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 # Replace 'YOUR_CLIENT_SECRETS_SECRET_NAME' with the actual secret name
 
 
-
+st.write(st.secrets)
 
 def load_creds():
     """Retrieves Google OAuth credentials securely using Streamlit Secrets."""
