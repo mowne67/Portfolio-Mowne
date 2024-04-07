@@ -8,7 +8,7 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 SCOPES = ['https://www.googleapis.com/auth/generative-language.tuning']
 
 # Replace 'YOUR_CLIENT_SECRETS_SECRET_NAME' with the actual secret name
-CLIENT_SECRETS_SECRET_NAME = 'YOUR_CLIENT_SECRETS_SECRET_NAME'
+CLIENT_SECRETS_SECRET_NAME = 'GOOGLE_OAUTH'
 
 # Function to load client_secrets.json from GitHub secrets
 def load_client_secrets():
