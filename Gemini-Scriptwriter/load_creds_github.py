@@ -50,7 +50,7 @@ def load_creds():
         if authorization_code:
             flow.fetch_token(code=authorization_code)
 
-            credentials = flow.credentials()
+            credentials = flow.credentials
             return credentials
 
         #creds = flow.run_local_server(port=0)
