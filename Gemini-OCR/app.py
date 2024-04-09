@@ -4,12 +4,15 @@ import PIL.Image
 #from ocr import ocr_func, llm
 import cv2
 import numpy as np
+import os
 
+api_key = os.getenv("GOOGLE_API_KEY")
+genai.configure(api_key=api_key)
 st.set_page_config(layout = 'wide')
 uploaded_file = st.file_uploader("Upload your image file", type=['png', 'jpg', 'jpeg'])
 
-api_key = st.text_input("Google API Key")
-genai.configure(api_key=api_key)
+#api_key = st.text_input("Google API Key")
+
 model = genai.GenerativeModel('gemini-pro-vision')
 def llm(image):
     image = PIL.Image.fromarray(image)
