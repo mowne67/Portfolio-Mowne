@@ -6,7 +6,7 @@ import cv2
 import numpy as np
 import os
 
-api_key = os.getenv("GOOGLE_API_KEY")
+api_key = st.secrets['GOOGLE_API_KEY']
 genai.configure(api_key=api_key)
 st.set_page_config(layout = 'wide')
 uploaded_file = st.file_uploader("Upload your image file", type=['png', 'jpg', 'jpeg'])
