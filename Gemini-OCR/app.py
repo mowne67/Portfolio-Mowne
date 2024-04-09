@@ -13,7 +13,7 @@ genai.configure(api_key=api_key)
 model = genai.GenerativeModel('gemini-pro-vision')
 def llm(image):
     image = PIL.Image.fromarray(image)
-    response = model.generate_content(["What is the text written in the given image?", image])
+    response = model.generate_content(["What is the text written in the given image? Do not provide anything other than the text in the given image", image])
     return response.text
 
 if (uploaded_file is not None) and (api_key is not None):
