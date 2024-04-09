@@ -24,8 +24,9 @@ if (uploaded_file is not None) and (api_key is not None):
     file_bytes = uploaded_file.getvalue()
     np_arr = np.fromstring(file_bytes, np.uint8)
     img = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
+    col1, col2 = st.columns(2)
     if img is not None:
-        st.image(img, caption='Processed Image')
+        col1.image(img, caption='Processed Image')
 
     # col1, col2 = st.columns(2)
     # col1.write("OCR - pytesseract")
@@ -48,5 +49,5 @@ if (uploaded_file is not None) and (api_key is not None):
     #     col1.success(st.session_state.ocr_result)
     # if st.session_state.llm_result:
     #     st.warning(st.session_state.llm_result)
-    if st.button("Read"):
-        st.success(llm(img))
+    if col2.button("Read"):
+        col2.success(llm(img))
