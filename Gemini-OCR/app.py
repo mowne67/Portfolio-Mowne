@@ -30,7 +30,7 @@ if (uploaded_file is not None) and (api_key is not None):
 
     # col1, col2 = st.columns(2)
     # col1.write("OCR - pytesseract")
-    st.write("LLM - Gemini")
+    col2.title("LLM - Gemini")
 
     # Initialize variables to store results
     #if st.session_state.ocr_result is None:
