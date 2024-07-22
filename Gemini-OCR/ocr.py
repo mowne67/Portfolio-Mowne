@@ -6,7 +6,7 @@ import PIL.Image
 from app import api_key
 
 genai.configure(api_key=api_key)
-model = genai.GenerativeModel('gemini-pro-vision')
+model = genai.GenerativeModel('gemini-1.5-flash')
 exe_path = r"C:\Users\u1137734\AppData\Local\Programs\Tesseract-OCR\tesseract.exe"
 
 #pytesseract.pytesseract.tesseract_cmd = exe_path

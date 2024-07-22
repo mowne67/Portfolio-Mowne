@@ -10,7 +10,7 @@ with open("coco.names", "r") as f:
 
 # Set input video file
 #video_path = "path/to/your/video.mp4"
-cap = cv2.VideoCapture("videos/store.mp4")
+cap = cv2.VideoCapture(0)
 
 while True:
     ret, frame = cap.read()
