@@ -13,7 +13,7 @@ uploaded_file = st.file_uploader("Upload your image file", type=['png', 'jpg', '
 
 #api_key = st.text_input("Google API Key")
 
-model = genai.GenerativeModel('gemini-pro-vision')
+model = genai.GenerativeModel('gemini-1.5-flash')
 def llm(image):
     image = PIL.Image.fromarray(image)
     response = model.generate_content(["Extract and provide all of the text written in the given image. Do not provide anything other than the text in the given image", image])
