@@ -12,7 +12,7 @@ st.set_page_config(layout = 'wide')
 uploaded_file = st.file_uploader("Upload your image file", type=['png', 'jpg', 'jpeg'])
 
 
-st.markdown("'[![Title]('https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg')]('www.linkedin.com/in/mowne')")
+st.markdown("[![Title]('https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg')]('www.linkedin.com/in/mowne')")
 #api_key = st.text_input("Google API Key")
 
 model = genai.GenerativeModel('gemini-1.5-flash')
