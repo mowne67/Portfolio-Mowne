@@ -13,11 +13,8 @@ with st.container():
     st.write("My Profiles")
     st.image("https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg")
     st.page_link("https://www.linkedin.com/in/mowne", label="LinkedIn")
-    st.logo(
-        "https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg",
-        link="https://www.linkedin.com/in/mowne",
+    st.logo("https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg", link="https://www.linkedin.com/in/mowne")
         #icon_image="https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg",
-    )
 
 uploaded_file = st.file_uploader("Upload your image file", type=['png', 'jpg', 'jpeg'])
 
