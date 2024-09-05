@@ -4,6 +4,8 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_community.chat_models import ChatOllama
 import google.generativeai as genai
 import streamlit as st
+import time
+
 st.title("Talk to a CSV file!")
 st.info('by Mowne')
 st.logo("https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg",
@@ -26,5 +28,10 @@ if uploaded_file:
     st.dataframe(df)
     question = st.text_input("Ask away!")
     if question:
-        st.write_stream(agent_executor.invoke(question)['output'])
+        answer = agent_executor.invoke(question)['output']
+        def stream_data():
+            for word in answer.split(" "):
+                yield word + " "
+                time.sleep(0.02)
+        st.write_stream(stream_data)
 
