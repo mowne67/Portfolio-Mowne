@@ -11,10 +11,8 @@ genai.configure(api_key=api_key)
 st.set_page_config(layout = 'wide')
 with st.container():
     st.write("My Profiles")
-    st.image("https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg")
-    st.page_link("https://www.linkedin.com/in/mowne", label="LinkedIn")
     st.logo("https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg", link="https://www.linkedin.com/in/mowne")
-        #icon_image="https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg",
+    st.logo("GitHub_Logo.png", link="https://github.com/mowne67/Portfolio-Mowne")
 
 uploaded_file = st.file_uploader("Upload your image file", type=['png', 'jpg', 'jpeg'])
 
