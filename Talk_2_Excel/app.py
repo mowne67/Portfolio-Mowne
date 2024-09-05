@@ -5,7 +5,9 @@ from langchain_community.chat_models import ChatOllama
 import google.generativeai as genai
 import streamlit as st
 st.title("Talk to a csv file!")
-st.write('by Mowne')
+st.info('by Mowne')
+st.logo("https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg",
+        link="https://www.linkedin.com/in/mowne")
 uploaded_file = st.file_uploader("Upload your Excel/CSV file", type=['xlsx', 'csv'])
 df = pd.read_csv(uploaded_file)
 
