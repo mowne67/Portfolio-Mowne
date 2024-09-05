@@ -12,7 +12,7 @@ st.set_page_config(layout = 'wide')
 with st.container():
     st.write("My Profiles")
     st.logo("https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg", link="https://www.linkedin.com/in/mowne")
-    st.logo("GitHub_Logo.png", link="https://github.com/mowne67/Portfolio-Mowne")
+    st.logo("https://toppng.com/uploads/preview/github-logo-transparent-png-11659780101agvzsukgqz.png", link="https://github.com/mowne67/Portfolio-Mowne")
 
 uploaded_file = st.file_uploader("Upload your image file", type=['png', 'jpg', 'jpeg'])
 
