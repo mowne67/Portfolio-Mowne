@@ -4,7 +4,8 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_community.chat_models import ChatOllama
 import google.generativeai as genai
 import streamlit as st
-
+st.title("Talk to a csv file!")
+st.write('by Mowne')
 uploaded_file = st.file_uploader("Upload your Excel/CSV file", type=['xlsx', 'csv'])
 df = pd.read_csv(uploaded_file)
 
@@ -20,7 +21,8 @@ agent_executor = create_pandas_dataframe_agent(
     handle_parsing_errors=True,
     max_iterations = 1000
 )
-st.dataframe(df)
-question = st.text_input("Ask away!")
-st.success(agent_executor.invoke(question)['output'])
+if uploaded_file:
+    st.dataframe(df)
+    question = st.text_input("Ask away!")
+    st.success(agent_executor.invoke(question)['output'])
 
