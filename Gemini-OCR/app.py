@@ -10,7 +10,7 @@ api_key = st.secrets['GOOGLE_API_KEY']
 genai.configure(api_key=api_key)
 st.set_page_config(layout = 'wide')
 st.image("https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg")
-st.page_link("www.linkedin.com/in/mowne", label="LinkedIn")
+st.page_link("https://www.linkedin.com/in/mowne", label="LinkedIn")
 #col2.markdown("[![Title](https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/189_Kaggle_logo_logos-1024.png)](www.kaggle.com/mownetharanaks)")
 
 uploaded_file = st.file_uploader("Upload your image file", type=['png', 'jpg', 'jpeg'])
