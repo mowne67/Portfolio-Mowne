@@ -9,6 +9,8 @@ import os
 api_key = st.secrets['GOOGLE_API_KEY']
 genai.configure(api_key=api_key)
 st.set_page_config(layout = 'wide')
+
+st.title("Optical Character Recognizer by Mowne")
 with st.container():
     st.logo("https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg", link="https://www.linkedin.com/in/mowne")
     #st.logo("https://toppng.com/uploads/preview/github-logo-transparent-png-11659780101agvzsukgqz.png", link="https://github.com/mowne67/Portfolio-Mowne")
