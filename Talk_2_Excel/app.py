@@ -25,5 +25,6 @@ if uploaded_file:
     )
     st.dataframe(df)
     question = st.text_input("Ask away!")
-    st.success(agent_executor.invoke(question)['output'])
+    if question:
+        st.success(agent_executor.invoke(question)['output'])
 
