@@ -10,7 +10,7 @@ st.title("Talk to a CSV file!")
 st.info('by Mowne')
 st.logo("https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg",
         link="https://www.linkedin.com/in/mowne")
-uploaded_file = st.file_uploader("Upload your Excel/CSV file", type=['xlsx', 'csv'])
+uploaded_file = st.file_uploader("Upload your CSV file", type=['csv'])
 if uploaded_file:
     df = pd.read_csv(uploaded_file)
     api_key = st.secrets['GOOGLE_API_KEY']
