@@ -67,3 +67,4 @@ langchain-experimental
 langchain_google_genai
 openpyxl
 tabulate
+streamlit-pandas-profiling
