@@ -37,3 +37,18 @@ if uploaded_file:
                 time.sleep(0.02)
         st.write_stream(stream_data)
 
+    user_input = st.chat_input("Say something")
+    with col2:
+        if user_input:
+            st.session_state['chat_history'].append({'user': user_input})
+            bot_response = agent_executor.invoke(user_input)['output']
+            st.session_state['chat_history'].append({'bot': bot_response})
+
+        for chat in st.session_state['chat_history']:
+            if 'user' in chat:
+                with st.chat_message('user'):
+                    st.write(chat['user'], unsafe_allow_html=True)
+            elif 'bot' in chat:
+                with st.chat_message('assistant'):
+                    st.write(str(chat['bot']), unsafe_allow_html=True)
+
