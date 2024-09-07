@@ -26,8 +26,9 @@ if uploaded_file:
         max_iterations=1000
     )
     col1, col2 = st.columns([1, 3])
-    # with col1:
-    #     st.dataframe(df)
+    with col1:
+        with st.expander():
+            st.dataframe(df)
     # question = st.text_input("Ask away!")
     # if question:
     #     answer = agent_executor.invoke(question)['output']
