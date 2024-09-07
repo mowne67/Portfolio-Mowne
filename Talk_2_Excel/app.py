@@ -36,12 +36,12 @@ if uploaded_file:
     #             yield word + " "
     #             time.sleep(0.02)
     #     st.write_stream(stream_data)
-
+    user_input = st.chat_input("Say something")
     with col2:
 
         if 'chat_history' not in st.session_state:
             st.session_state['chat_history'] = []
-        user_input = st.chat_input("Say something")
+
         if user_input:
             st.session_state['chat_history'].append({'user': user_input})
             bot_response = agent_executor.invoke(user_input)['output']
