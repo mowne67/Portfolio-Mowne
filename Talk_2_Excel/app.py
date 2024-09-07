@@ -26,16 +26,16 @@ if uploaded_file:
         max_iterations=1000
     )
     col1, col2 = st.columns([1, 3])
-    with col1:
-        st.dataframe(df)
-    question = st.text_input("Ask away!")
-    if question:
-        answer = agent_executor.invoke(question)['output']
-        def stream_data():
-            for word in answer.split(" "):
-                yield word + " "
-                time.sleep(0.02)
-        st.write_stream(stream_data)
+    # with col1:
+    #     st.dataframe(df)
+    # question = st.text_input("Ask away!")
+    # if question:
+    #     answer = agent_executor.invoke(question)['output']
+    #     def stream_data():
+    #         for word in answer.split(" "):
+    #             yield word + " "
+    #             time.sleep(0.02)
+    #     st.write_stream(stream_data)
 
     with col2:
 
