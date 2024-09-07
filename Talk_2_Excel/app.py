@@ -27,7 +27,7 @@ if uploaded_file:
     )
     col1, col2 = st.columns([1, 3])
     with col1:
-        with st.expander():
+        with st.expander("Dataframe"):
             st.dataframe(df)
     # question = st.text_input("Ask away!")
     # if question:
