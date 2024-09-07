@@ -5,7 +5,7 @@ from langchain_community.chat_models import ChatOllama
 import google.generativeai as genai
 import streamlit as st
 import time
-
+st.set_page_config(layout = 'wide')
 st.title("Talk to a CSV file!")
 st.info('by Mowne')
 st.logo("https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg",
@@ -25,7 +25,7 @@ if uploaded_file:
         handle_parsing_errors=True,
         max_iterations=1000
     )
-    col1, col2 = st.columns(2)
+    col1, col2 = st.columns([1, 3])
     with col1:
         st.dataframe(df)
     question = st.text_input("Ask away!")
@@ -36,10 +36,12 @@ if uploaded_file:
                 yield word + " "
                 time.sleep(0.02)
         st.write_stream(stream_data)
-    if 'chat_history' not in st.session_state:
-        st.session_state['chat_history'] = []
-    user_input = st.chat_input("Say something")
+
     with col2:
+
+        if 'chat_history' not in st.session_state:
+            st.session_state['chat_history'] = []
+        user_input = st.chat_input("Say something")
         if user_input:
             st.session_state['chat_history'].append({'user': user_input})
             bot_response = agent_executor.invoke(user_input)['output']
