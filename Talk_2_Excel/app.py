@@ -25,7 +25,7 @@ if uploaded_file:
         handle_parsing_errors=True,
         max_iterations=1000
     )
-    col1, col2 = st.columns()
+    col1, col2 = st.columns(2)
     with col1:
         st.dataframe(df)
     question = st.text_input("Ask away!")
