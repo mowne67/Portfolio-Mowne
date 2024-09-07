@@ -17,9 +17,9 @@ uploaded_file = st.file_uploader("Upload your CSV file", type=['csv'])
 
 if uploaded_file:
     df = pd.read_csv(uploaded_file)
-    # pr = df.profile_report()
-    # with st.expander("Report"):
-    #     st_profile_report(pr)
+    pr = df.profile_report()
+    with st.expander("Report"):
+        st_profile_report(pr)
     api_key = st.secrets['GOOGLE_API_KEY']
     genai.configure(api_key=api_key)
 
