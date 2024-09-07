@@ -36,7 +36,8 @@ if uploaded_file:
                 yield word + " "
                 time.sleep(0.02)
         st.write_stream(stream_data)
-
+    if 'chat_history' not in st.session_state:
+        st.session_state['chat_history'] = []
     user_input = st.chat_input("Say something")
     with col2:
         if user_input:
