@@ -29,6 +29,7 @@ if uploaded_file:
     with col1:
         with st.expander("Dataframe"):
             st.dataframe(df)
+
     # question = st.text_input("Ask away!")
     # if question:
     #     answer = agent_executor.invoke(question)['output']
@@ -37,7 +38,8 @@ if uploaded_file:
     #             yield word + " "
     #             time.sleep(0.02)
     #     st.write_stream(stream_data)
-    user_input = st.chat_input("Say something")
+
+    user_input = st.chat_input("Ask away!")
     with col2:
 
         if 'chat_history' not in st.session_state:
@@ -54,5 +56,11 @@ if uploaded_file:
                     st.write(chat['user'], unsafe_allow_html=True)
             elif 'bot' in chat:
                 with st.chat_message('assistant'):
-                    st.write(str(chat['bot']), unsafe_allow_html=True)
+                    #st.write(str(chat['bot']), unsafe_allow_html=True)
+                    def stream_data():
+                        for word in str(chat['bot']).split(" "):
+                            yield word + " "
+                            time.sleep(0.02)
+
+                    st.write_stream(stream_data)
 
