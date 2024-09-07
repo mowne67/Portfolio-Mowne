@@ -23,9 +23,11 @@ if uploaded_file:
         verbose=True,
         allow_dangerous_code=True,
         handle_parsing_errors=True,
-        max_iterations = 1000
+        max_iterations=1000
     )
-    st.dataframe(df)
+    col1, col2 = st.columns()
+    with col1:
+        st.dataframe(df)
     question = st.text_input("Ask away!")
     if question:
         answer = agent_executor.invoke(question)['output']
