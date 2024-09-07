@@ -5,14 +5,21 @@ from langchain_community.chat_models import ChatOllama
 import google.generativeai as genai
 import streamlit as st
 import time
+import pandas_profiling
+from streamlit_pandas_profiling import st_profile_report
 st.set_page_config(layout = 'wide')
 st.title("Talk to a CSV file!")
 st.write('by Mowne')
 st.logo("https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg",
         link="https://www.linkedin.com/in/mowne")
+
 uploaded_file = st.file_uploader("Upload your CSV file", type=['csv'])
+
 if uploaded_file:
     df = pd.read_csv(uploaded_file)
+    pr = df.profile_report()
+    with st.expander("Report"):
+        st_profile_report(pr)
     api_key = st.secrets['GOOGLE_API_KEY']
     genai.configure(api_key=api_key)
 
