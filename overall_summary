@@ -1,0 +1,50 @@
+import os
+from pathlib import Path
+
+# ✅ Your working GPT-4o function
+def call_gpt4o(prompt: str) -> str:
+    # Replace this with your real GPT-4o call
+    return "Mock summary + flowchart for demonstration."
+
+# ✅ Step 1: Collect all individual summaries into one text blob
+def collect_all_summaries(summary_dir: str) -> str:
+    all_summaries = ""
+    for file in Path(summary_dir).glob("*.summary.md"):
+        try:
+            content = file.read_text(encoding="utf-8")
+            all_summaries += f"\n\n# {file.name}\n{content}\n"
+        except Exception as e:
+            print(f"❌ Error reading {file}: {e}")
+    return all_summaries
+
+# ✅ Step 2: Prompt GPT-4o to generate project-wide summary + flowchart
+def generate_codebase_summary_and_flowchart(summary_text: str) -> str:
+    prompt = f"""
+You are a software documentation assistant.
+
+Below are summaries of individual files in a codebase. Your tasks:
+
+1. Provide an overall summary of what the entire codebase does, including its key components and purpose.
+2. Generate a flowchart or architecture diagram using Markdown or ASCII (text-based), showing how the main files, functions, or modules relate to each other.
+
+CODEBASE FILE SUMMARIES:
+{summary_text}
+"""
+    return call_gpt4o(prompt)
+
+# ✅ Step 3: Save the result to a markdown file
+def save_overall_summary(output: str, output_path: str = "codebase_overview.md"):
+    with open(output_path, "w", encoding="utf-8") as f:
+        f.write("# 📦 Overall Codebase Summary and Flowchart\n\n")
+        f.write(output.strip())
+    print(f"✅ Saved: {output_path}")
+
+# ✅ Step 4: Run everything
+if __name__ == "__main__":
+    summary_dir = "summaries"  # Folder where individual .summary.md files are stored
+    combined_summary = collect_all_summaries(summary_dir)
+    if not combined_summary.strip():
+        print("⚠️ No summaries found.")
+    else:
+        final_output = generate_codebase_summary_and_flowchart(combined_summary)
+        save_overall_summary(final_output)
