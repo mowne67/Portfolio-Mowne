@@ -1,32 +1,41 @@
-# Step 1: Transpose the existing sheet (rows → columns)
-transposed = []
-for col in range(1, ws.max_column + 1):
-    transposed.append([ws.cell(row=row, column=col).value for row in range(1, ws.max_row + 1)])
+from openpyxl import load_workbook
 
-# Step 2: First column now contains the field names ("Information") — header in index 0
-fields = [col[0] for col in transposed[1:]]  # Skip column A (header)
+def reorder_rows_in_app_sheets(file_path: str, required_fields: list[str]) -> None:
+    wb = load_workbook(file_path)
 
-# Map: field name → full column (i.e., original row)
-field_to_column = {col[0]: col for col in transposed[1:]}  # exclude header row
+    for ws in wb.worksheets:
+        if not ws.title.startswith("App"):
+            continue
 
-# Step 3: Rebuild transposed data: header column first
-new_transposed = [transposed[0]]  # First column (A) remains unchanged (e.g., Reference Number, Date, etc.)
+        # Step 1: Transpose sheet (rows → columns)
+        transposed = []
+        for col in range(1, ws.max_column + 1):
+            transposed.append([
+                ws.cell(row=row, column=col).value for row in range(1, ws.max_row + 1)
+            ])
 
-# Reorder rest of the columns (i.e., original rows) by required_fields
-for field in required_fields:
-    if field in field_to_column:
-        new_transposed.append(field_to_column[field])
-    else:
-        # Add empty row if field not found
-        new_transposed.append([field] + [""] * (len(transposed[0]) - 1))
+        # Step 2: Build map from field name → column (which was a row originally)
+        field_to_column = {
+            col[0]: col for col in transposed[1:]  # skip column A
+        }
 
-# Step 4: Transpose back to row-wise data
-final_data = list(zip(*new_transposed))  # Columns → rows
+        # Step 3: Rebuild transposed matrix with reordered fields
+        new_transposed = [transposed[0]]  # keep header column (field labels)
+        for field in required_fields:
+            if field in field_to_column:
+                new_transposed.append(field_to_column[field])
+            else:
+                # If field not found, append blank row with just the label
+                new_transposed.append([field] + [""] * (len(transposed[0]) - 1))
 
-# Step 5: Clear existing sheet
-ws.delete_rows(1, ws.max_row)
+        # Step 4: Transpose back (columns → rows)
+        final_data = list(zip(*new_transposed))
 
-# Step 6: Write reordered data back
-for i, row in enumerate(final_data, start=1):
-    for j, value in enumerate(row, start=1):
-        ws.cell(row=i, column=j, value=value)
+        # Step 5: Clear sheet and write back
+        ws.delete_rows(1, ws.max_row)
+        for i, row in enumerate(final_data, start=1):
+            for j, value in enumerate(row, start=1):
+                ws.cell(row=i, column=j).value = value
+
+    # Step 6: Save changes to the workbook
+    wb.save(file_path)
