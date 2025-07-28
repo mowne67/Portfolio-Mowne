@@ -7,35 +7,25 @@ def reorder_rows_in_app_sheets(file_path: str, required_fields: list[str]) -> No
         if not ws.title.startswith("App"):
             continue
 
-        # Step 1: Transpose sheet (rows → columns)
-        transposed = []
-        for col in range(1, ws.max_column + 1):
-            transposed.append([
-                ws.cell(row=row, column=col).value for row in range(1, ws.max_row + 1)
-            ])
+        # Step 1: Build mapping from field name (col A) to full row values
+        field_to_row = {}
+        for row in range(2, ws.max_row + 1):  # skip header row
+            key = ws.cell(row=row, column=1).value
+            if key:
+                field_to_row[key] = [
+                    ws.cell(row=row, column=col).value
+                    for col in range(1, ws.max_column + 1)
+                ]
 
-        # Step 2: Build map from field name → column (which was a row originally)
-        field_to_column = {
-            col[0]: col for col in transposed[1:]  # skip column A
-        }
+        # Step 2: Delete existing data rows (not header)
+        ws.delete_rows(2, ws.max_row)
 
-        # Step 3: Rebuild transposed matrix with reordered fields
-        new_transposed = [transposed[0]]  # keep header column (field labels)
+        # Step 3: Reinsert rows in required_fields order
+        current_row = 2
         for field in required_fields:
-            if field in field_to_column:
-                new_transposed.append(field_to_column[field])
-            else:
-                # If field not found, append blank row with just the label
-                new_transposed.append([field] + [""] * (len(transposed[0]) - 1))
+            row_values = field_to_row.get(field, [field] + [""] * (ws.max_column - 1))
+            for col_index, value in enumerate(row_values, start=1):
+                ws.cell(row=current_row, column=col_index).value = value
+            current_row += 1
 
-        # Step 4: Transpose back (columns → rows)
-        final_data = list(zip(*new_transposed))
-
-        # Step 5: Clear sheet and write back
-        ws.delete_rows(1, ws.max_row)
-        for i, row in enumerate(final_data, start=1):
-            for j, value in enumerate(row, start=1):
-                ws.cell(row=i, column=j).value = value
-
-    # Step 6: Save changes to the workbook
     wb.save(file_path)
