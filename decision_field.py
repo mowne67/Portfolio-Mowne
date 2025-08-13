@@ -1,61 +1,98 @@
 import pandas as pd
 import numpy as np
+import re
 from openpyxl import load_workbook
-from openpyxl.styles import PatternFill
+from openpyxl.styles import Font
 
-# Read the Excel file
-df = pd.read_csv("file.csv") # Replace with your actual file path
-
-# Create the decision column based on your rules
-def create_decision(row):
-    fma = row['fma']
-    calculation = row['calculation']
-    
-    # Rule 3: If either field is blank/NA, leave decision blank
-    if pd.isna(fma) or pd.isna(calculation) or fma == '' or calculation == '':
+def clean_currency(value):
+    """Remove currency symbols and convert to float"""
+    if pd.isna(value) or value == '' or str(value).upper() == 'NA':
         return np.nan
     
-    # Rule 1: If fma > calculation, show fma
-    if fma > calculation:
-        return fma
+    # Convert to string and remove common currency symbols
+    clean_val = str(value).strip()
+    # Remove currency symbols from both sides
+    clean_val = re.sub(r'^[\$£€¥₹]+|[\$£€¥₹]+$', '', clean_val)
+    # Remove commas and spaces
+    clean_val = re.sub(r'[,\s]', '', clean_val)
     
-    # Rule 2: If fma != calculation (and fma <= calculation), show calculation
-    # This will be formatted with red background later
-    else:
-        return calculation
+    try:
+        return float(clean_val)
+    except ValueError:
+        return np.nan
 
-# Apply the logic to create the decision column
-df['decision'] = df.apply(create_decision, axis=1)
-
-# Save to a new Excel file with formatting
-output_file = 'output_file.xlsx'
-df.to_excel(output_file, index=False)
-
-# Now apply red background formatting to cells where fma != calculation
-wb = load_workbook(output_file)
-ws = wb.active
-
-# Create red background fill style
-red_fill = PatternFill(start_color="FF0000", end_color="FF0000", fill_type="solid")
-
-# Find the decision column index (assuming it's the last column)
-decision_col_idx = len(df.columns)
-
-# Apply formatting
-for idx, row in df.iterrows():
-    fma = row['fma']
-    calculation = row['calculation']
-    decision = row['decision']
+def apply_decision_rules(row):
+    """Apply the decision rules for each row"""
+    fma_clean = clean_currency(row['fma'])
+    calc_clean = clean_currency(row['calculation'])
     
-    # Skip if decision is blank
-    if pd.isna(decision):
-        continue
+    # If either field is empty/NA, leave blank
+    if pd.isna(fma_clean) or pd.isna(calc_clean):
+        return {'value': '', 'color': 'black'}
     
-    # If fma != calculation and we're showing calculation, make background red
-    if not pd.isna(fma) and not pd.isna(calculation) and fma != calculation and fma <= calculation:
-        cell = ws.cell(row=idx + 2, column=decision_col_idx)  # +2 because of header and 0-indexing
-        cell.fill = red_fill
+    # If fma is higher than calculation, show fma
+    if fma_clean > calc_clean:
+        return {'value': row['fma'], 'color': 'black'}
+    
+    # If fma and calculation don't match, show calculation in red
+    if fma_clean != calc_clean:
+        return {'value': row['calculation'], 'color': 'red'}
+    
+    # If they match exactly, show the value in black
+    return {'value': row['calculation'], 'color': 'black'}
 
-# Save the formatted file
-wb.save(output_file)
-print(f"File saved as: {output_file}")
+# Read the Excel file
+def process_excel_file(input_file, output_file):
+    # Read the Excel file
+    df = pd.read_excel(input_file)
+    
+    # Apply the decision rules
+    decisions = df.apply(apply_decision_rules, axis=1)
+    
+    # Extract values and colors
+    df['decision'] = [d['value'] for d in decisions]
+    decision_colors = [d['color'] for d in decisions]
+    
+    # Save to Excel with formatting
+    with pd.ExcelWriter(output_file, engine='openpyxl') as writer:
+        df.to_excel(writer, index=False, sheet_name='Sheet1')
+        
+        # Get the workbook and worksheet
+        workbook = writer.book
+        worksheet = writer.sheets['Sheet1']
+        
+        # Find the decision column (assuming it's the last column)
+        decision_col = len(df.columns)
+        
+        # Apply red color formatting where needed
+        red_font = Font(color="FF0000")  # Red color
+        
+        for idx, color in enumerate(decision_colors, start=2):  # start=2 because row 1 is header
+            if color == 'red':
+                cell = worksheet.cell(row=idx, column=decision_col)
+                cell.font = red_font
+
+# Example usage
+if __name__ == "__main__":
+    # If you want to test with sample data
+    sample_data = {
+        'fma': ['$100', '€200', '₹150', '', '$300', 'NA', '$250'],
+        'calculation': ['$80', '€200', '₹200', '$120', '', '$250', '$250'],
+        'underwriter': ['John', 'Jane', 'Bob', 'Alice', 'Charlie', 'David', 'Eve']
+    }
+    
+    df = pd.DataFrame(sample_data)
+    
+    # Apply the decision rules
+    decisions = df.apply(apply_decision_rules, axis=1)
+    df['decision'] = [d['value'] for d in decisions]
+    decision_colors = [d['color'] for d in decisions]
+    
+    print("Sample result:")
+    print(df)
+    print("\nColors for decision column:", decision_colors)
+    
+    # To process your actual Excel file, uncomment and modify these lines:
+    # input_file = 'your_input_file.xlsx'
+    # output_file = 'your_output_file.xlsx'
+    # process_excel_file(input_file, output_file)
